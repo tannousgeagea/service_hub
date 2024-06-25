@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  # core
+  service-hub:
+    image: wasteant/wasteant:service-hub-ubuntu.22.04
+    container_name: service-hub-core
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    build:
+      context: .
+      args:
+        user: ${user}
+        userid: ${userid}
+        group: ${group}
+        groupid: ${groupid}
+    network_mode: host
+    env_file: .env
+    restart: unless-stopped
+    volumes:
+      - .:/home/$user/src
+    user: ${user}
