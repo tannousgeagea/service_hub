@@ -16,6 +16,7 @@ from data_api.routers.urls import get_urls_info
 from data_api.routers.plant_info import get_plant_info
 from data_api.routers.services import get_service_info
 from data_api.routers.plant_info import add_plant_info
+from data_api.routers.services import add_service_info
 
 def create_app() -> FastAPI:
     tags_meta = [
@@ -52,6 +53,7 @@ def create_app() -> FastAPI:
     app.include_router(get_plant_info.router)
     app.include_router(get_service_info.router)
     app.include_router(add_plant_info.router)
+    app.include_router(add_service_info.router)
     
     return app
 
